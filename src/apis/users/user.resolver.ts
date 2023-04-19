@@ -1,18 +1,21 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { UserService } from './user.service';
 import { User } from './entites/user.entity';
+import * as bcrypt from 'bcrypt';
 
 @Resolver()
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
   @Mutation(() => User)
-  createUser(
+  async createUser(
     @Args('email') email: string,
     @Args('password') password: string,
     @Args('name') name: string,
     @Args('age') age: number,
   ) {
-    return this.userService.create({ email, password, name, age });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log(hashedPassword);
+    return this.userService.create({ email, hashedPassword, name, age });
   }
 }
