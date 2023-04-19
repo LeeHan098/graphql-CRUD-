@@ -60,6 +60,7 @@ type Query {
 }
 
 type Mutation {
+  login(email: String!, password: String!): String!
   createUser(email: String!, password: String!, name: String!, age: Float!): User!
   createProductCategory(name: String!): ProductCategory!
   createProduct(createProductInput: CreateProductInput!): Product!

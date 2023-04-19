@@ -9,6 +9,9 @@ export class UserService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
   ) {}
+  async findOne({ email }) {
+    return await this.userRepository.findOne({ where: { email } });
+  }
   async create({ email, hashedPassword: password, name, age }) {
     const user = await this.userRepository.findOne({ where: { email } });
     console.log('14315', user);

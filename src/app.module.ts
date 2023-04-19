@@ -7,9 +7,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Board } from './apis/boards/entities/board.entity';
 import { ProductCategoryModule } from './apis/productCategory/productCategory.module';
 import { UserModule } from './apis/users/user.module';
+import { AuthModule } from './apis/auth/auth.module';
 
 @Module({
   imports: [
+    AuthModule,
     UserModule,
     ProductCategoryModule,
     ProductsModule,
