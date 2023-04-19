@@ -6,9 +6,11 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Board } from './apis/boards/entities/board.entity';
 import { ProductCategoryModule } from './apis/productCategory/productCategory.module';
+import { UserModule } from './apis/users/user.module';
 
 @Module({
   imports: [
+    UserModule,
     ProductCategoryModule,
     ProductsModule,
     BoardsModule,
