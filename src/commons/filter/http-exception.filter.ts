@@ -15,5 +15,9 @@ export class HttpExceptionFilter implements ExceptionFilter {
     console.log('예외내용', message);
     console.log('예외 코드', status);
     console.log('============================');
+
+    if (status === 500) {
+      return new HttpException('서버무네로 인한 예외', 500);
+    }
   }
 }

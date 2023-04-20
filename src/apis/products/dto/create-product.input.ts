@@ -1,11 +1,13 @@
 import { InputType, Int, Field } from '@nestjs/graphql';
-import { Min } from 'class-validator';
+import { IsNotEmpty, Min } from 'class-validator';
 import { ProductSaleslocationInput } from 'src/apis/productsSaleslocation/dto/productSaleslocation.input';
 
 @InputType()
 export class CreateProductInput {
+  @IsNotEmpty()
   @Field(() => String)
   name: string;
+  @IsNotEmpty()
   @Field(() => String)
   description: string;
   @Min(100)
